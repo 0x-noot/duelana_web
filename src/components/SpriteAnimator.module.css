@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sprite {
+  image-rendering: pixelated;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}

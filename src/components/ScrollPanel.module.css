@@ -1,0 +1,32 @@
+.container {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.popup {
+  background-image: url('/sprites/popup-menu.png');
+}
+
+.scroll {
+  background-image: url('/sprites/med-scroll.png');
+}
+
+.banner {
+  background-image: url('/sprites/Middle_UI_Scroll.png');
+}
+
+.card {
+  background-image: url('/sprites/order-paper-med.png');
+}
+
+.rsBorder {
+  border-width: 2px;
+  border-style: solid;
+  border-top-color: #1c1510;
+  border-left-color: #1c1510;
+  border-bottom-color: #635b4f;
+  border-right-color: #635b4f;
+}

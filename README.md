@@ -1,6 +1,6 @@
 # Duelana
 
-> A provably fair on-chain dueling game built for the **Solana Seeker** phone.
+> A provably fair on-chain dueling game built for the web & the **Solana Seeker** phone.
 
 Duelana is a medieval pixel art fighting game at heart — but underneath the swords and fanfare it's a 50/50 wager resolved by **MagicBlock VRF**. Two players lock SOL or SKR tokens in escrow, the VRF oracle picks a winner, and a ~26-second sprite animation plays out the dramatic result.
 

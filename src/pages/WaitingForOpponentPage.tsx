@@ -104,8 +104,8 @@ export function WaitingForOpponentPage() {
   return (
     <div style={{
       width: '100%', height: '100vh',
-      backgroundImage: `url(${backgrounds.battlefield})`,
-      backgroundSize: 'cover', backgroundPosition: 'center',
+      backgroundImage: `url(${backgrounds.duelArena})`,
+      backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
     }}>
       <div style={{
         width: '100%', height: '100%', padding: spacing.md,

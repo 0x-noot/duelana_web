@@ -9,6 +9,7 @@ import { useWallet } from '../providers/WalletProvider';
 import { useHistoryDuels } from '../hooks/useDuelSubscription';
 import { formatSol, formatToken } from '../utils/format';
 import { SKR_DECIMALS } from '../utils/constants';
+import { backgrounds } from '../assets';
 
 export function HistoryPage() {
   const { publicKey } = useWallet();
@@ -24,7 +25,12 @@ export function HistoryPage() {
 
   return (
     <div style={{
-      backgroundColor: colors.bg,
+      backgroundImage: `url(${backgrounds.homeNew})`,
+      backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+    }}>
+    <div style={{
+      backgroundColor: 'rgba(26, 15, 8, 0.5)',
       minHeight: '100vh',
       padding: spacing.md,
       display: 'flex',
@@ -98,6 +104,7 @@ export function HistoryPage() {
       <div style={{ paddingTop: spacing.md, display: 'flex', justifyContent: 'center' }}>
         <PixelButton title="REFRESH" onPress={refresh} small />
       </div>
+    </div>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { useAllDuels, DuelAccount, isTokenDuel } from '../hooks/useDuelSubscript
 import { useDuelanaProgram } from '../hooks/useDuelanaProgram';
 import { deriveEscrowPDA, deriveTokenEscrowPDA } from '../utils/pda';
 import { VRF_ORACLE_QUEUE, VRF_PROGRAM_ID, SLOT_HASHES_SYSVAR, PROGRAM_ID, SKR_MINT, TOKEN_PROGRAM_ID } from '../utils/constants';
+import { backgrounds } from '../assets';
 
 const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
 
@@ -178,7 +179,12 @@ export function LobbyPage() {
 
   return (
     <div style={{
-      backgroundColor: colors.bg,
+      backgroundImage: `url(${backgrounds.homeNew})`,
+      backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+    }}>
+    <div style={{
+      backgroundColor: 'rgba(26, 15, 8, 0.5)',
       minHeight: '100vh',
       padding: spacing.md,
       display: 'flex',
@@ -226,10 +232,11 @@ export function LobbyPage() {
       <div style={{ paddingTop: spacing.md }}>
         <PixelButton
           title="CREATE DUEL"
-          onPress={() => navigate('/create-duel')}
+          onPress={() => navigate('/create')}
           disabled={!publicKey}
         />
       </div>
+    </div>
     </div>
   );
 }

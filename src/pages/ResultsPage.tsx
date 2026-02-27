@@ -11,7 +11,7 @@ import { useDuelanaProgram } from '../hooks/useDuelanaProgram';
 import { deriveEscrowPDA, deriveTokenEscrowPDA } from '../utils/pda';
 import { formatSol, formatToken, truncateAddress } from '../utils/format';
 import { TREASURY, SKR_MINT, SKR_DECIMALS, TOKEN_PROGRAM_ID } from '../utils/constants';
-import { fighters, tokenLogos } from '../assets';
+import { fighters, tokenLogos, backgrounds } from '../assets';
 import { AudioManager } from '../audio/AudioManager';
 
 const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
@@ -133,7 +133,12 @@ export function ResultsPage() {
 
   return (
     <div style={{
-      backgroundColor: colors.bg, minHeight: '100vh', padding: spacing.md,
+      backgroundImage: `url(${backgrounds.duelArena})`,
+      backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+    }}>
+    <div style={{
+      backgroundColor: 'rgba(26, 15, 8, 0.5)', minHeight: '100vh', padding: spacing.md,
       display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: spacing.lg,
       boxSizing: 'border-box',
     }}>
@@ -145,8 +150,8 @@ export function ResultsPage() {
         {isWinner ? 'YOU WON!' : 'YOU LOST!'}
       </span>
 
-      <ScrollPanel variant="popup" style={{ width: '100%', maxWidth: 500, padding: 0 }}>
-        <div style={{ paddingTop: 36, paddingBottom: 28, paddingLeft: 24, paddingRight: 24, display: 'flex', flexDirection: 'column', gap: spacing.md }}>
+      <ScrollPanel variant="popup" style={{ width: '100%', maxWidth: 680, padding: 0 }}>
+        <div style={{ paddingTop: 48, paddingBottom: 40, paddingLeft: 40, paddingRight: 40, display: 'flex', flexDirection: 'column', gap: spacing.md }}>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: spacing.sm }}>
               <span style={{ fontFamily, fontSize: 11, color: colors.text, textAlign: 'center' }}>
@@ -194,7 +199,7 @@ export function ResultsPage() {
         {isWinner && !isClaimed && (
           <PixelButton title={claiming ? 'CLAIMING...' : 'CLAIM!'} onPress={handleClaim} disabled={claiming} />
         )}
-        {isClaimed && (
+        {isWinner && isClaimed && (
           <span style={{ fontFamily, fontSize: 16, color: colors.success, textAlign: 'center' }}>WINNINGS CLAIMED!</span>
         )}
         {isWinner && !isClaimed && (
@@ -202,6 +207,7 @@ export function ResultsPage() {
         )}
         <PixelButton title="BACK TO HOME" onPress={() => navigate('/')} disabled={!canGoHome} />
       </div>
+    </div>
     </div>
   );
 }

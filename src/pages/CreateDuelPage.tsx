@@ -13,7 +13,7 @@ import { useDuelanaProgram } from '../hooks/useDuelanaProgram';
 import { deriveDuelPDA, deriveEscrowPDA, deriveTokenEscrowPDA } from '../utils/pda';
 import { solToLamports, tokenToSmallestUnit, truncateAddress } from '../utils/format';
 import { SKR_MINT, SKR_DECIMALS, TOKEN_PROGRAM_ID } from '../utils/constants';
-import { tokenLogos } from '../assets';
+import { tokenLogos, backgrounds } from '../assets';
 
 const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
 
@@ -99,7 +99,12 @@ export function CreateDuelPage() {
 
   return (
     <div style={{
-      backgroundColor: colors.bg,
+      backgroundImage: `url(${backgrounds.homeNew})`,
+      backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+    }}>
+    <div style={{
+      backgroundColor: 'rgba(26, 15, 8, 0.5)',
       minHeight: '100vh',
       padding: spacing.md,
       display: 'flex',
@@ -182,6 +187,7 @@ export function CreateDuelPage() {
           />
         </div>
       </div>
+    </div>
     </div>
   );
 }

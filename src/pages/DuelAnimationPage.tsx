@@ -12,7 +12,7 @@ import { ScrollPanel } from '../components/ScrollPanel';
 import { useScreenMusic, useAudioManager, useMuted, useToggleMute } from '../audio/useAudio';
 import { AudioManager } from '../audio/AudioManager';
 
-const SPRITE_SIZE = 160;
+const SPRITE_SIZE = 156;
 const VRF_TIMEOUT_MS = 45_000;
 const POLL_INTERVAL_MS = 4_000;
 
@@ -21,7 +21,7 @@ const MAX_HP = 99;
 const WINNER_END_HP = 35;
 const HIT_INTERVAL_MS = 800;
 const HITSPLAT_VISIBLE_MS = 700;
-const HITSPLAT_SIZE = 64;
+const HITSPLAT_SIZE = 66;
 const TOTAL_HITS = 16;
 
 interface HitEvent {
@@ -380,6 +380,7 @@ export function DuelAnimationPage() {
       backgroundImage: `url(${backgrounds.duelArena})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
       minHeight: '100vh',
       position: 'relative',
       imageRendering: 'pixelated' as any,

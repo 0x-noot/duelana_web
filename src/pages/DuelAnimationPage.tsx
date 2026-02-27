@@ -377,7 +377,7 @@ export function DuelAnimationPage() {
 
   return (
     <div style={{
-      backgroundImage: `url(${backgrounds.battlefield})`,
+      backgroundImage: `url(${backgrounds.duelArena})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       minHeight: '100vh',

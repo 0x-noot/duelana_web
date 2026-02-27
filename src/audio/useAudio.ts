@@ -1,5 +1,4 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
 import { AudioManager } from './AudioManager';
 
 type MusicTrack = 'home' | 'battle';
@@ -10,7 +9,6 @@ type MusicTrack = 'home' | 'battle';
  * When unmuted, the current page's track resumes.
  */
 export function useScreenMusic(track: MusicTrack) {
-  const location = useLocation();
   const muted = useMuted();
 
   useEffect(() => {
@@ -20,7 +18,7 @@ export function useScreenMusic(track: MusicTrack) {
     return () => {
       AudioManager.stopMusic();
     };
-  }, [track, muted, location.pathname]);
+  }, [track, muted]);
 }
 
 /** Subscribe to the mute state. Re-renders when mute toggles. */

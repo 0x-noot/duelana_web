@@ -4,8 +4,9 @@
 export const backgrounds = {
   castle: '/sprites/CASTLE-MAIN_MENU_BG.png',
   castleWithLogo: '/sprites/background.png',
-  homeNew: '/sprites/background_new.png',
+  homeNew: '/sprites/background_final.png',
   battlefield: '/sprites/battlefiled_temporary.png',
+  duelArena: '/sprites/duel_arena.png',
 };
 
 // Logo

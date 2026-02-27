@@ -84,7 +84,7 @@ export function HomePage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.md, width: '100%', maxWidth: 300 }}>
               <PixelButton
                 title="CREATE DUEL"
-                onPress={() => navigate('/create-duel')}
+                onPress={() => navigate('/create')}
                 disabled={!connected}
               />
               <PixelButton
@@ -122,7 +122,7 @@ export function HomePage() {
             padding: spacing.lg, zIndex: 1000,
           }}
         >
-          <div onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: 380, maxHeight: '85%' }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: 600, maxHeight: '92vh' }}>
             <ScrollPanel variant="popup" style={{ padding: 0 }}>
               <div style={{ paddingLeft: 32, paddingRight: 32, paddingTop: 28, paddingBottom: 20, position: 'relative' }}>
                 <RSCloseButton
@@ -133,7 +133,7 @@ export function HomePage() {
                   HOW IT WORKS
                 </div>
 
-                <div style={{ maxHeight: 400, overflowY: 'auto' }}>
+                <div style={{ maxHeight: 'calc(75vh - 140px)', overflowY: 'auto' }}>
                   {[
                     ['1. FAIR 50/50 ODDS', 'Every duel is a coinflip with exactly 50/50 odds. No house edge beyond the protocol fee.'],
                     ['2. PROTOCOL FEE', 'SOL duels: 3% fee. SKR token duels: only 1% fee. The fee is taken from the total pot and sent to the Duelana treasury. The rest goes to the winner.'],

@@ -12,7 +12,7 @@ class AudioManagerClass {
   private muted = false;
   private muteListeners: MuteListener[] = [];
 
-  async init(): Promise<void> {
+  init(): void {
     // Load mute preference from localStorage
     const saved = localStorage.getItem('duelana_muted');
     if (saved === 'true') {
@@ -26,17 +26,17 @@ class AudioManagerClass {
     return this.muted;
   }
 
-  async setMuted(muted: boolean): Promise<void> {
+  setMuted(muted: boolean): void {
     this.muted = muted;
     localStorage.setItem('duelana_muted', String(muted));
     if (muted) {
-      await this.stopMusic();
+      this.stopMusic();
     }
     this.muteListeners.forEach(fn => fn(muted));
   }
 
-  async toggleMute(): Promise<void> {
-    await this.setMuted(!this.muted);
+  toggleMute(): void {
+    this.setMuted(!this.muted);
   }
 
   onMuteChange(listener: MuteListener): () => void {
@@ -48,10 +48,10 @@ class AudioManagerClass {
 
   // ---- Music ----
 
-  async playMusic(track: MusicTrack): Promise<void> {
+  playMusic(track: MusicTrack): void {
     if (this.muted) return;
     if (this.currentMusicTrack === track && this.currentMusic) return;
-    await this.stopMusic();
+    this.stopMusic();
     try {
       this.currentMusic = new Howl({
         src: [music[track]],
@@ -65,7 +65,7 @@ class AudioManagerClass {
     }
   }
 
-  async stopMusic(): Promise<void> {
+  stopMusic(): void {
     if (this.currentMusic) {
       try {
         this.currentMusic.stop();
@@ -80,7 +80,7 @@ class AudioManagerClass {
 
   // ---- Sound Effects (fire-and-forget) ----
 
-  async playSfx(source: string): Promise<void> {
+  playSfx(source: string): void {
     if (this.muted) return;
     try {
       const sound = new Howl({
@@ -96,41 +96,41 @@ class AudioManagerClass {
     }
   }
 
-  async playRandomSfx(pool: string[]): Promise<void> {
+  playRandomSfx(pool: string[]): void {
     const index = Math.floor(Math.random() * pool.length);
-    return this.playSfx(pool[index]);
+    this.playSfx(pool[index]);
   }
 
   // ---- Convenience methods ----
 
-  async playBattleHit(): Promise<void> {
+  playBattleHit(): void {
     const all = [...battleSounds.swords, ...battleSounds.impacts];
-    return this.playRandomSfx(all);
+    this.playRandomSfx(all);
   }
 
-  async playHeavyImpact(): Promise<void> {
-    return this.playRandomSfx(battleSounds.impacts);
+  playHeavyImpact(): void {
+    this.playRandomSfx(battleSounds.impacts);
   }
 
-  async playCountdown(num: 3 | 2 | 1): Promise<void> {
+  playCountdown(num: 3 | 2 | 1): void {
     const map = {
       3: voiceOvers.countdown3,
       2: voiceOvers.countdown2,
       1: voiceOvers.countdown1,
     };
-    return this.playSfx(map[num]);
+    this.playSfx(map[num]);
   }
 
-  async playResult(won: boolean): Promise<void> {
-    return this.playSfx(won ? voiceOvers.youWin : voiceOvers.youLose);
+  playResult(won: boolean): void {
+    this.playSfx(won ? voiceOvers.youWin : voiceOvers.youLose);
   }
 
-  async playUIClick(): Promise<void> {
-    return this.playRandomSfx(uiSounds.click);
+  playUIClick(): void {
+    this.playRandomSfx(uiSounds.click);
   }
 
-  async cleanup(): Promise<void> {
-    await this.stopMusic();
+  cleanup(): void {
+    this.stopMusic();
   }
 }
 

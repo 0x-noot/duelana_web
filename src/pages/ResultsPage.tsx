@@ -99,7 +99,6 @@ export function ResultsPage() {
       tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
       const signature = await signAndSendTransaction(tx);
       await connection.confirmTransaction(signature, 'confirmed');
-      alert(`Claimed ${formatAmount(payout)} ${tokenSymbol}!`);
     } catch (err: any) {
       const msg = err?.error?.errorMessage || err?.message || 'Failed to claim winnings';
       alert(`Claim Failed: ${msg}\n\nPlease try again.`);
